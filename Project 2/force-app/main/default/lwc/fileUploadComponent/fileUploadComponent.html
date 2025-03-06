@@ -1,0 +1,49 @@
+<template>
+    <lightning-card title="Upload Supporting Documents">
+        <div class="slds-p-around_medium">
+            <!-- Use standard input type="file" for file selection only -->
+            <lightning-input 
+                type="file"
+                label="Select your supporting documents"
+                accept={acceptedFormats}
+                multiple
+                onchange={handleFilesChange}>
+            </lightning-input>
+            
+            <!-- Display selected files -->
+            <template if:true={selectedFiles.length}>
+                <div class="slds-p-top_medium">
+                    <div class="slds-text-heading_small slds-p-bottom_x-small">Selected Files ({selectedFiles.length})</div>
+                    <ul class="slds-has-dividers_bottom-space">
+                        <template for:each={selectedFiles} for:item="file" for:index="index">
+                            <li key={file.name} class="slds-item">
+                                <div class="slds-grid slds-gutters">
+                                    <div class="slds-col slds-size_1-of-12">
+                                        <lightning-icon icon-name="doctype:attachment" size="small"></lightning-icon>
+                                    </div>
+                                    <div class="slds-col slds-size_9-of-12">
+                                        {file.name}
+                                    </div>
+                                    <div class="slds-col slds-size_2-of-12 slds-text-align_right">
+                                        <lightning-button-icon
+                                            icon-name="utility:close"
+                                            alternative-text="Remove"
+                                            size="small"
+                                            variant="bare"
+                                            data-index={index}
+                                            onclick={handleRemoveFile}>
+                                        </lightning-button-icon>
+                                    </div>
+                                </div>
+                            </li>
+                        </template>
+                    </ul>
+                </div>
+            </template>
+            
+            <div class="slds-text-body_small slds-p-top_x-small">
+                Accepted file types: PDF, PNG, JPG, JPEG, DOC, DOCX, TXT
+            </div>
+        </div>
+    </lightning-card>
+</template>

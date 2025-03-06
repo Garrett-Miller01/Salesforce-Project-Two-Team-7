@@ -1,0 +1,5 @@
+<aura:component implements="flexipage:availableForAllPageTypes, forceCommunity:availableForAllPageTypes" access="global">
+    <p>TEST AURA COMPONENT</p>
+    <!-- implements="flexipage:availableForAllPageTypes" -->
+     <!-- implements="forceCommunity:availableForAllPageTypes" -->
+</aura:component>

@@ -1,0 +1,29 @@
+<template>
+    
+    <lightning-layout horizontal-align="center" multiple-rows>
+
+        <lightning-layout-item size="12"> <lightning-card title="Pension Claims">
+
+            <lightning-record-edit-form
+                object-api-name={caseObject}
+                onsubmit={handleCaseCreation}
+                onsuccess={handleSuccess}
+                form-class="slds-p-around_medium"
+                density="comfy"
+            >
+              
+                <lightning-messages></lightning-messages>
+
+                <lightning-input-field field-name={reason}></lightning-input-field>
+                <lightning-input-field field-name={totalIncome}></lightning-input-field>
+                <lightning-input-field field-name={incomeDetails}></lightning-input-field>
+
+
+                <lightning-button type="submit" variant="brand" label="Submit Claim"></lightning-button>
+
+            </lightning-record-edit-form>
+        </lightning-card> </lightning-layout-item>
+
+    </lightning-layout>
+
+</template>

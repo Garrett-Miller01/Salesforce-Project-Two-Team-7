@@ -1,0 +1,31 @@
+
+<apex:page controller="viewClaimsController" lightningStylesheets="true">
+
+    <head>
+        <apex:slds/>
+    </head>
+
+    <apex:form>
+
+        <apex:pageBlock>
+
+            <apex:pageBlockTable value="{! claims }" var="claim">
+                <apex:column> 
+                    <apex:facet name="header">Claim Number</apex:facet>
+                    <apex:outputLink value="/claimsRecordPage?id={!claim.CaseNumber}">
+                        {!claim.CaseNumber}
+                    </apex:outputLink>
+                </apex:column>
+                <apex:column value="{! claim.RecordTypeId }"/>
+                <apex:column value="{! claim.Status }"/>        
+                <apex:column value="{! claim.CreatedDate }"/>
+                <apex:column value="{! claim.ClosedDate }"/>
+            </apex:pageBlockTable>
+
+        </apex:pageBlock>
+
+    </apex:form>
+
+
+
+</apex:page>

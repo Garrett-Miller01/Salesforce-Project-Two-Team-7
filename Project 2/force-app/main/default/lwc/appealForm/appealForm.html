@@ -1,0 +1,61 @@
+<template>
+    <lightning-card title="Submit Appeal" icon-name="standard:case">
+        <div class="slds-p-around_medium">
+            <form onsubmit={handleSubmit}>
+                <!-- Case Number Input -->
+                <lightning-input
+                    label="Case Number"
+                    value={caseNumber}
+                    onchange={handleCaseNumberChange}
+                    required
+                ></lightning-input>
+
+                <!-- Appeal Type Picklist -->
+                <lightning-combobox
+                    name="appealType"
+                    label="Appeal Type"
+                    value={appealType}
+                    options={appealTypeOptions}
+                    onchange={handleTypeChange}
+                    required
+                ></lightning-combobox>
+
+                <!-- Comments -->
+                <lightning-textarea
+                    label="Comments"
+                    value={comments}
+                    onchange={handleCommentsChange}
+                ></lightning-textarea>
+
+                <!-- Reason -->
+                <lightning-textarea
+                    label="Reason"
+                    value={reason}
+                    onchange={handleReasonChange}
+                ></lightning-textarea>
+
+
+                <div>
+                <!-- Submit Button -->
+                <lightning-button
+                    class="slds-m-top_medium"
+                    variant="brand"
+                    type="submit"
+                    label={buttonLabel}
+                    disabled={isLoading}
+                ></lightning-button>
+                </div>
+            </form>
+
+            <!-- File Upload -->
+            <lightning-file-upload
+                label="Attach Supporting Documents"
+                name="fileUploader"
+                accept={acceptedFormats}
+                record-id={appealId}
+                onuploadfinished={handleUploadFinished}
+                class="slds-m-top_medium"
+            ></lightning-file-upload>
+        </div>
+    </lightning-card>
+</template>

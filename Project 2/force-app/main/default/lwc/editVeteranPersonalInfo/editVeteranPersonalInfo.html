@@ -1,0 +1,49 @@
+<template>
+    
+    <lightning-layout horizontal-align="center" multiple-rows>
+
+        <lightning-layout-item size="12"> <lightning-card icon-name="standard:account" variant="base">
+            <div slot="title">
+                Edit Your Info
+            </div>
+
+            <lightning-record-edit-form
+                object-api-name="Account"
+                record-id={accountId}
+                onsuccess={handleSuccess}
+                form-class="slds-p-around_medium"
+                density="comfy"
+            >
+              
+                <lightning-messages></lightning-messages>
+
+                <lightning-input-field field-name="FirstName"></lightning-input-field>
+                <lightning-input-field field-name="LastName"></lightning-input-field>
+                <lightning-input-field field-name="PersonEmail"></lightning-input-field>
+                <lightning-input-field field-name="Phone"></lightning-input-field>
+                <lightning-input-field field-name="Social_Security_Number__c"></lightning-input-field>
+                <lightning-input-field field-name="Military_Branch__c"></lightning-input-field>
+                <lightning-input-field field-name="Starting_Date_of_Service__c"></lightning-input-field>
+                <lightning-input-field field-name="End_Date_of_Service__c"></lightning-input-field>
+
+                <lightning-button type="submit" variant="brand" label="Submit Changes"></lightning-button>
+
+            </lightning-record-edit-form>
+        </lightning-card> </lightning-layout-item>
+
+        <template lwc:if={success}>
+
+            <lightning-layout-item>
+                <lightning-card> 
+                    <div style="padding-left: 10px; padding-right: 10px">
+                        Information Updated 
+                    </div>
+                    
+                </lightning-card>
+            </lightning-layout-item>      
+
+        </template>
+
+    </lightning-layout>
+
+</template>

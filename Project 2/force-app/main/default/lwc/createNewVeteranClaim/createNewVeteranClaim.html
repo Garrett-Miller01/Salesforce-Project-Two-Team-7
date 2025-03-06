@@ -1,0 +1,97 @@
+<template>
+
+    <!-- 
+            Aura App URL : https://awcomputing536.lightning.force.com/c/componentTestingApp.app
+            Experienece Site URL : awcomputing536.my.site.com/claimsPortal
+
+            Test User
+            Misty Day
+            mday@testingprojecttwo.com.332453
+            mDay#12345678
+    -->
+
+    <lightning-layout 
+    multiple-rows 
+    size="10"
+    horizontal-align="center"
+    pull-to-boundary="small"
+    vertical-align="start"
+    >      
+        <lightning-layout-item size="10"> 
+            <lightning-card title="Welcome to the Claim Creator" icon-name="standard:case"> 
+
+                <div class="slds-p-around_medium">
+
+                    <lightning-select
+                        label="What Type of Claim are you making?"
+                        value={value}
+                        options={claimTypesAvailable}
+                        onchange={handleClaimSelect}
+                    ></lightning-select>
+
+                </div>
+
+                <template lwc:if={dComp}>
+
+                    <lightning-layout-item size="10"> <c-disability-comp-claim-creator onclaimcreatedevent={handleClaimCreated}></c-disability-comp-claim-creator> </lightning-layout-item>
+
+                </template>
+
+                <template lwc:if={eduTrain}>
+
+                    <lightning-layout-item size="10"> <c-education-training-claim-creator onclaimcreatedevent={handleClaimCreated}></c-education-training-claim-creator> </lightning-layout-item>
+
+                </template>
+
+                <template lwc:if={healthBen}>
+
+                    <lightning-layout-item size="10"> <c-healthcare-benefits-claim-creator onclaimcreatedevent={handleClaimCreated}></c-healthcare-benefits-claim-creator> </lightning-layout-item>
+
+                </template>
+
+                <template lwc:if={houseAssist}>
+
+                    <lightning-layout-item size="10"> <c-housing-assistance-claim-creator onclaimcreatedevent={handleClaimCreated}></c-housing-assistance-claim-creator> </lightning-layout-item>
+
+                </template>
+
+                <template lwc:if={pension}>
+
+                    <lightning-layout-item size="10"> <c-pension-claim-creator onclaimcreatedevent={handleClaimCreated}></c-pension-claim-creator> </lightning-layout-item>
+
+                </template>
+
+                <template lwc:if={fileUpload}>
+
+                    <lightning-layout-item size="10"> 
+
+                        <div class="slds-p-around_medium">
+
+                            <lightning-card title="Upload Supporting Documents for Your Claim">
+                                <lightning-file-upload
+                                    label="Upload Your Files"
+                                    accept={acceptedFormats}
+                                    record-id={claimId}
+                                    multiple
+                                    onuploadfinished={handleUploadFinished}
+                                >
+                                </lightning-file-upload>
+
+                            </lightning-card> 
+
+                        </div>
+
+                    </lightning-layout-item>
+            
+
+                </template>
+            </lightning-card>
+        </lightning-layout-item>
+
+
+
+
+
+    </lightning-layout>
+
+</template>

@@ -1,0 +1,34 @@
+<!-- 
+DOCS References 
+ https://developer.salesforce.com/docs/component-library/bundle/lightning-record-edit-form/documentation
+ https://developer.salesforce.com/docs/platform/lwc/guide/data-create-record.html#override-default-behaviors-using-custom-events
+
+-->
+<template>
+    <lightning-layout horizontal-align="center" multiple-rows>
+
+        <lightning-layout-item size="12"> <lightning-card title="Disability Compensation Claims">
+
+            <lightning-record-edit-form
+                object-api-name={caseObject}
+                onsubmit={handleCaseCreation}
+                onsuccess={handleSuccess}
+                form-class="slds-p-around_medium"
+                density="comfy"
+            >
+              
+                <lightning-messages></lightning-messages>
+
+                <lightning-input-field field-name={injuryDateField}></lightning-input-field>
+                <lightning-input-field field-name={injuryField}></lightning-input-field>
+                <lightning-input-field field-name={recordTypeField} value={recordTypeId}></lightning-input-field>
+
+
+                <lightning-button type="submit" variant="brand" label="Submit Claim"></lightning-button>
+
+            </lightning-record-edit-form>
+        </lightning-card> </lightning-layout-item>
+
+
+    </lightning-layout>
+</template>

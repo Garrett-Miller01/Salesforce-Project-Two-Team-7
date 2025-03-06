@@ -1,0 +1,62 @@
+<template>
+    
+    <lightning-layout horizontal-align="center" multiple-rows>
+
+        <!--
+        <template lwc:if={userNotCreated}>
+            <lightning-layout-item > <lightning-card icon-name="standard:account" variant="base">
+                <div slot="title">
+                    Register For the Veterans Claims Portal
+                </div>
+
+                <lightning-record-edit-form
+                    object-api-name={userObject}
+                    form-class="slds-p-around_small"
+                    onsubmit={createUser}
+                >
+
+                    <lightning-messages></lightning-messages>
+
+                    <lightning-input-field field-name={nameField}></lightning-input-field>
+                    <lightning-input-field field-name={emailField}></lightning-input-field>
+
+
+                    <lightning-button type="submit" variant="brand" label="Register"></lightning-button>
+
+                </lightning-record-edit-form>
+
+            </lightning-card> </lightning-layout-item>
+
+        </template>
+    -->
+
+        <lightning-layout-item > <lightning-card icon-name="standard:account" variant="base">
+            <div slot="title">
+                Additional Information
+            </div>
+
+            <lightning-record-edit-form
+                object-api-name={accountObject}
+                form-class="slds-p-around_small"
+                onsubmit={createAccount}
+            >
+
+                <lightning-messages></lightning-messages>
+
+                <lightning-input-field field-name={startServiceField}></lightning-input-field>
+                <lightning-input-field field-name={endServiceField}></lightning-input-field>
+                <lightning-input-field field-name={branchField}></lightning-input-field>
+                <lightning-input-field field-name={birthdateField}></lightning-input-field>
+                
+                <!-- <lightning-input-field field-name={}></lightning-input-field> -->
+
+                <lightning-button type="submit" variant="brand" label="Register"></lightning-button>
+
+            </lightning-record-edit-form>
+
+        </lightning-card> </lightning-layout-item>
+
+
+    </lightning-layout>
+
+</template>
