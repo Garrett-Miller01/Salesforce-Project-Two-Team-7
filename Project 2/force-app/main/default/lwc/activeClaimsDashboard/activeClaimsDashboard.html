@@ -1,0 +1,33 @@
+<template>
+    <lightning-card title="Active Claims" icon-name="standard:case">
+        <template if:true={activeClaims}>
+            <table class="slds-table slds-table_bordered slds-table_striped">
+                <thead>
+                    <tr class="slds-text-title_caps">
+                        <th scope="col">Case Number</th>
+                        <th scope="col">Record Type</th>
+                        <th scope="col">Created Date</th>
+                        <th scope="col">Status</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <template for:each={activeClaims} for:item="claim">
+                        <tr key={claim.Id}>
+                            <td>{claim.CaseNumber}</td>
+                            <td>{claim.RecordType.Name}</td>
+                            <td>{claim.CreatedDate}</td>
+                            <td>{claim.Status}</td>
+                        </tr>
+                    </template>
+                </tbody>
+            </table>
+        </template>
+        <template if:true={error}>
+            <p class="slds-text-color_error">Error loading claims: {error.body.message}</p>
+        </template>
+        <!-- Use the getter here -->
+        <template if:true={showNoClaimsMessage}>
+            <p>No active claims found.</p>
+        </template>
+    </lightning-card>
+</template>
