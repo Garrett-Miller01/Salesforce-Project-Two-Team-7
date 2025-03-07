@@ -1,0 +1,67 @@
+<apex:page standardController="Case" lightningStylesheets="true">
+    <apex:tabPanel >
+        <apex:tab label="Details">
+            <apex:pageBlock >
+                <apex:pageBlockSection >
+                    <apex:outputField value="{!Case.CaseNumber}"/> 
+                    <apex:outputField value="{!Case.Subject}"/> 
+                    <apex:outputField value="{!Case.Status}"/>
+                    <apex:outputField value="{!Case.CreatedDate}"/>
+                    <apex:outputField value="{!Case.Appealed__c}"/>
+                </apex:pageBlockSection>
+
+                <!-- DISABILITY COMPENSATION -->
+
+                <apex:pageBlockSection title="Disability Compensation Details" rendered="{!Case.RecordTypeId == '0124U000000p1csQAA'}">
+                    <apex:outputField value="{!Case.Service_Connected_Injury_Illness__c	}"/>
+                    <apex:outputField value="{!Case.Injury_Date__c}"/>
+                </apex:pageBlockSection>
+
+                <!-- PENSION -->
+
+                <apex:pageBlockSection title="Pension Details" rendered="{!Case.RecordTypeId == '0124U000000p1cxQAA'}">
+                    <apex:outputField value="{!Case.Reason_for_Pension__c}"/>
+                    <apex:outputField value="{!Case.Total_Income__c}"/>
+                    <apex:outputField value="{!Case.Income_Details__c}"/>
+                </apex:pageBlockSection>
+
+                <!-- HEALTHCARE BENEFITS -->
+
+                <apex:pageBlockSection title="Healthcare Benefits Details" rendered="{!Case.RecordTypeId == '0124U000000p1d2QAA'}">
+                    <apex:outputField value="{!Case.Current_Health_Status__c}"/>
+                    <apex:outputField value="{!Case.Current_Health_Status_Details__c}"/>
+                    <apex:outputField value="{!Case.Total_Income__c}"/>
+                    <apex:outputField value="{!Case.Income_Details__c}"/>
+                </apex:pageBlockSection>
+
+                <!-- EDUCATION & TRAINING -->
+
+                <apex:pageBlockSection title="Education and Training Details" rendered="{!Case.RecordTypeId == '0124U000000p1d7QAA'}">
+                    <apex:outputField value="{!Case.Type_of_Training_Education__c	}"/>
+                    <apex:outputField value="{!Case.Education_Details__c}"/>
+                </apex:pageBlockSection>
+
+                <!-- HOUSING ASSISTANCE -->
+
+                <apex:pageBlockSection title="Housing Assistance Details" rendered="{!Case.RecordTypeId == '0124U000000p1dCQAQ'}">
+                    <apex:outputField value="{!Case.Disability_Status__c}"/>
+                    <apex:outputField value="{!Case.Total_Income__c}"/>
+                    <apex:outputField value="{!Case.Income_Details__c}"/>
+                    <apex:outputField value="{!Case.Credit_Score__c}"/>
+                    <apex:outputField value="{!Case.Credit_Details__c}"/>
+                </apex:pageBlockSection>
+
+                <!-- DENIAL INFORMATION -->
+
+                <apex:pageBlockSection title="Denial Details" rendered="{!Case.Status == 'Denied'}">
+                    <apex:outputField value="{!Case.Reason_for_Denial__c}"/>
+                    <apex:outputField value="{!Case.Denial_Details__c}"/>
+                </apex:pageBlockSection>
+
+            </apex:pageBlock>
+        </apex:tab>
+        <apex:tab label="Related Lists">
+            <apex:relatedList list="CombinedAttachments"/>
+        </apex:tab>
+    </apex:tabPanel>
+</apex:page>

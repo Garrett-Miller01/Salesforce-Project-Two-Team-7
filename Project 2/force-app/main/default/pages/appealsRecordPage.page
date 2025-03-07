@@ -1,0 +1,26 @@
+<apex:page standardController="Appeal__c" lightningStylesheets="true" title="My Appeal">
+
+    <head>
+        <apex:slds />
+    </head>
+    <apex:tabPanel >
+        <apex:tab label="Details">
+            <apex:pageBlock title="Details">
+                <apex:pageBlockSection >
+                    <apex:outputField value="{!Appeal__c.Name}"/> 
+                    <apex:outputField value="{!Appeal__c.Case__c}"/> 
+                    <apex:outputField value="{!Appeal__c.Reason__c}"/>
+                    <apex:outputField value="{!Appeal__c.Appeal_Type__c}"/>
+                    <apex:outputField value="{!Appeal__c.Status__c}"/>
+                </apex:pageBlockSection>
+                <apex:pageBlockSection title="Denial Details" rendered="{!Appeal__c.Status__c == 'Denied'}">
+                    <apex:outputField value="{!Appeal__c.Reason_for_Denial__c}"/>
+                    <apex:outputField value="{!Appeal__c.Denial_Details__c}"/>
+                </apex:pageBlockSection>
+            </apex:pageBlock>
+        </apex:tab>
+        <apex:tab label="Related Lists">
+            <apex:relatedList list="CombinedAttachments"/>
+        </apex:tab>
+    </apex:tabPanel>
+</apex:page>
